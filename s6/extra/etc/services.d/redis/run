@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# s6-setuidgid abc - run as a user abc (unprivileged)
+mkdir -p /.fluence/redis
+chmod -R a+x /.fluence/redis
+mkdir -p /.fluence/extra
+cp -fR /fluence/extra/redis.conf /.fluence/extra/
+# ln -s redis-cli /usr/bin/redis
+
+s6-setuidgid abc redis-server /.fluence/extra/redis.conf

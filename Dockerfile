@@ -125,10 +125,15 @@ LABEL dev.fluence.image.bundles.geth="${GETH_VERSION}"
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor > /usr/share/keyrings/nodesource.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x focal main" > /etc/apt/sources.list.d/nodesource.list
 
+# add redis
+RUN curl -fsSL https://packages.redis.io/gpg | gpg --dearmor > /usr/share/keyrings/redis-archive-keyring.gpg \
+    && echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb focal main" > /etc/apt/sources.list.d/redis.list
+
 RUN \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
+    redis \
     musl \
     nodejs && \
   echo "**** cleanup ****" && \
@@ -150,5 +155,11 @@ COPY --from=prepare-geth /usr/local/bin/geth /usr/bin/geth
 # copy bitcoin-cli
 COPY --from=prepare-bitcoin /bitcoin-${BITCOIN_CLI_VERSION}/bin/bitcoin-cli /usr/bin/bitcoin-cli
 
+# copy extra config
+COPY extra/ /fluence/extra/
+
 # copy s6 configs
 COPY s6/rich/ /
+
+# copy s6 extra configs
+COPY s6/extra/ /
