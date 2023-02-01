@@ -69,7 +69,7 @@ RUN --mount=type=bind,source=fluence,target=/fluence /fluence/download_builtins.
 RUN --mount=type=bind,source=fluence,target=/fluence /fluence/download_fluence.sh /fluence/fluence.json
 
 # copy default fluence config
-COPY fluence/Config.default.toml /.fluence/v1/Config.toml
+COPY fluence/Config.default.toml /fluence/v1/Config.toml
 
 # copy IPFS binary
 COPY --from=prepare-ipfs /usr/local/bin/ipfs /usr/bin/ipfs

@@ -1,4 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /.fluence
+mkdir -p /.fluence/v1/builtins
 chown -R abc:abc /.fluence
+
+cp -fR /builtins/* /.fluence/v1/builtins/
+cp -fR /fluence/v1/Config.toml /.fluence/v1/Config.toml
