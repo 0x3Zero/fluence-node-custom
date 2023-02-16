@@ -13,5 +13,10 @@
     "version": "v0.7.0",
     "url": "https://github.com/fluencelabs/registry/releases/download/v0.7.0/registry.tar.gz",
     "sha256": "10d33a1ebc8c5a3b549fce4c90ec58ed9df3682ec9665190e4d5c4dfa15db2aa"
+  },
+  "account": {
+    "version": "0.1.0",
+    "url": "https://github.com/0x3Zero/account/releases/download/0.1.0/account.tar.gz",
+    "sha256": "6080df92fdfbf73d0b08dd9e7809f2003df60d4865fd82d3786ade68c05f2e22"
   }
 }
