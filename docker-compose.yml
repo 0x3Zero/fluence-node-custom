@@ -27,9 +27,11 @@ services:
       - 9991:9991   # ws
       - 18081:18080 # /metrics
       - 8081:8080 # expose ipfs url
+      - 3331:3030 # jsonrpc
     restart: always
     volumes:
       - ./workdir/fluence-1:/.fluence
+      - ./jsonrpc:/app/jsonrpc
     networks:
       - fluence
 
@@ -58,9 +60,11 @@ services:
       - 9992:9992   # ws
       - 18082:18080 # /metrics
       - 8082:8080 # expose ipfs url
+      - 3332:3030 # jsonrpc
     restart: always
     volumes:
       - ./workdir/fluence-2:/.fluence
+      - ./jsonrpc:/app/jsonrpc
     networks:
       - fluence
 
@@ -89,9 +93,11 @@ services:
       - 9993:9993   # ws
       - 18083:18080 # /metrics
       - 8083:8080 # expose ipfs url
+      - 3333:3030 # jsonrpc
     restart: always
     volumes:
       - ./workdir/fluence-3:/.fluence
+      - ./jsonrpc:/app/jsonrpc
     networks:
       - fluence
 
