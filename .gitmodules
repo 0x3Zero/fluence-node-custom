@@ -1,3 +1,4 @@
 [submodule "jsonrpc"]
 	path = jsonrpc
 	url = git@github.com:0x3Zero/jsonrpc.git
+	branch = main
