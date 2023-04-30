@@ -32,6 +32,7 @@ services:
     volumes:
       - ./workdir/fluence-1:/.fluence
       - ./jsonrpc:/app/jsonrpc
+      - ./ipfs/fluence-1:/config/ipfs
     networks:
       - fluence
 
@@ -65,6 +66,7 @@ services:
     volumes:
       - ./workdir/fluence-2:/.fluence
       - ./jsonrpc:/app/jsonrpc
+      - ./ipfs/fluence-2:/config/ipfs
     networks:
       - fluence
 
@@ -98,6 +100,7 @@ services:
     volumes:
       - ./workdir/fluence-3:/.fluence
       - ./jsonrpc:/app/jsonrpc
+      - ./ipfs/fluence-3:/config/ipfs
     networks:
       - fluence
 
