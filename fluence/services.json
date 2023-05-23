@@ -13,5 +13,15 @@
     "version": "0.8.2",
     "url": "https://github.com/fluencelabs/registry/releases/download/registry-v0.8.2/registry.tar.gz",
     "sha256": "9e6b4e82989870c83910107bbda9a14b7f59601ff3361c0687cb90adf5171273"
+  },
+  "transaction": {
+    "version": "0.1.0",
+    "url": "https://github.com/0x3Zero/transaction/releases/download/0.1.0/transaction.tar.gz",
+    "sha256": "9fcc8d9da5303f4ddb91af1ee5e156c9eba34fadbdabe3ea13255a4d0c663673"
+  },
+  "fevm_json_rpc": {
+    "version": "0.1.0",
+    "url": "https://github.com/0x3Zero/evm_rpc/releases/download/0.1.0/fevm_json_rpc.tar.gz",
+    "sha256": "46d2e8d59eb6f4095bd1f4059432bafcff6a9858bcef00223888f676ef0777bb"
   }
 }

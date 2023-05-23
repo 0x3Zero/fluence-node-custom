@@ -85,6 +85,7 @@ LABEL org.opencontainers.image.description="rust-peer bundled with IPFS daemon"
 LABEL dev.fluence.bundles.ipfs="${IPFS_VERSION}"
 
 ENV IPFS_PATH=/config/ipfs
+ENV IPFS_DATASTORE=/config/ipfs/datastore
 ENV IPFS_LOG_DIR=/log/ipfs
 ENV IPFS_LOGGING_FMT=nocolor
 ENV IPFS_MIGRATE_FS=false
@@ -147,6 +148,7 @@ RUN \
 RUN npm install --cache /cache --global \
   @ceramicnetwork/cli@$CERAMIC_VERSION \
   @glazed/cli@$GLAZED_VERSION \
+  pm2 \
   && rm -rf /cache
 
 # copy geth

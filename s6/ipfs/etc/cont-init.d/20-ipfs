@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-if [[ ! -d "$IPFS_PATH" ]]; then
+if [[ ! -d "$IPFS_DATASTORE" ]]; then
 	ipfs init
 
 	# remove default bootstraps
