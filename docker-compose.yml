@@ -35,6 +35,8 @@ services:
       - ./ipfs/fluence-1:/config/ipfs
     networks:
       - fluence
+    depends_on:
+      - rqlite-1
 
   fluence-2: # /ip4/127.0.0.1/tcp/9992/ws/p2p/12D3KooWRABanQHUn28dxavN9ZS1zZghqoZVAYtFpoN7FdtoGTFv
     command: 
@@ -69,6 +71,8 @@ services:
       - ./ipfs/fluence-2:/config/ipfs
     networks:
       - fluence
+    depends_on:
+      - rqlite-1
 
   fluence-3: # /ip4/127.0.0.1/tcp/9993/ws/p2p/12D3KooWFpQ7LHxcC9FEBUh3k4nSCC12jBhijJv3gJbi7wsNYzJ5
     command: 
@@ -103,6 +107,8 @@ services:
       - ./ipfs/fluence-3:/config/ipfs
     networks:
       - fluence
+    depends_on:
+      - rqlite-1
 
   env.json:
     restart: "no"
@@ -144,6 +150,51 @@ services:
       - fluence
     ports:
       - 8080:8080
+
+  rqlite-1:
+    image: rqlite/rqlite:latest
+    ports:
+      - 4101:4001
+      - 4102:4002
+    volumes:
+      - ./rqlite/rqlite-1:/rqlite/file
+    networks:
+      - fluence
+    command:
+      - -on-disk=true
+      - -node-id 1
+  
+  rqlite-2:
+    image: rqlite/rqlite:latest
+    ports:
+      - 4201:4001
+      - 4202:4002
+    volumes:
+      - ./rqlite/rqlite-2:/rqlite/file
+    networks:
+      - fluence
+    depends_on:
+      - rqlite-1
+    command:
+      - -on-disk=true
+      - -node-id 2
+      - -join http://172.17.0.1:4101
+  
+  rqlite-3:
+    image: rqlite/rqlite:latest
+    ports:
+      - 4301:4001
+      - 4302:4002
+    volumes:
+      - ./rqlite/rqlite-3:/rqlite/file
+    networks:
+      - fluence
+    depends_on:
+      - rqlite-1
+    command:
+      - -on-disk=true
+      - -node-id 3
+      - -join http://172.17.0.1:4101
 
 # volumes:
 #   fluence: null
